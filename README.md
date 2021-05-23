@@ -27,7 +27,7 @@
 
 
 ## Link To Client :
-[Server](https://github.com/dotan826/targil-client)
+[Client](https://github.com/dotan826/targil-client)
 
 
 
