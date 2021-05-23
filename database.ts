@@ -6,10 +6,6 @@ const databaseName = "Targil"; // Database Name in the MongoDB Atlas Cluster
 // const MongoClient = require('mongodb').MongoClient; // MongoClient instance
 import { MongoClient, Db, InsertOneWriteOpResult, DeleteWriteOpResultObject, UpdateWriteOpResult } from 'mongodb';
 
-// "mongodb+srv://production-user-20:<password>@cluster0.ofydl.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority"
-// Password = <password> [change it to the password of the user !]
-// Default Database = <dbname> [change it to the name of the database we want to get by default !]
-// const url = `mongodb+srv://dbUser:${databasePassword}@cluster0.ofydl.gcp.mongodb.net/${databaseName}?retryWrites=true&w=majority`;
 const url = `mongodb+srv://dbUser:${databasePassword}@clustercheckthebill.mlbb2.mongodb.net/${databaseName}?retryWrites=true&w=majority`;
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -79,50 +75,5 @@ export const insertSpecificDocument = async (databaseObject: Db, collectionName:
     return result; // return result of the Insert Operation
 }
 
-// Delete from database collection a specific document
-export const deleteSpecificDocument = async (databaseObject: Db, collectionName: string, query: object) => {
-    const result = new Promise<DeleteWriteOpResultObject>((res, rej) => {
-        databaseObject.collection(collectionName).deleteOne(query, (err, result) => {
-            if (err){
-                console.log("Delete Document has Failed !");
-                throw err;
-            }
-            else{
-                res(result);
-            }
-        });
-    });
-    return result; // return result of the Delete Operation
-}
 
-// Delete from database collection many documents
-export const deleteManyDocuments = async (databaseObject: Db, collectionName: string, query: object) => {
-    const result = new Promise<DeleteWriteOpResultObject>((res, rej) => {
-        databaseObject.collection(collectionName).deleteMany(query, (err, result) => {
-            if (err){
-                console.log("Delete Documents has Failed !");
-                throw err;
-            }
-            else{
-                res(result);
-            }
-        });
-    });
-    return result; // return result of the Delete Operation
-}
 
-// Update a specific document in database collection
-export const updateSpecificDocument = async (databaseObject: Db, collectionName: string, query: object, updatedDocument: object) => {
-    const result = new Promise<UpdateWriteOpResult>((res, rej) => {
-        databaseObject.collection(collectionName).updateOne(query, updatedDocument, (err, result) => {
-            if (err){
-                console.log("Update Document has Failed !");
-                throw err;
-            }
-            else{
-                res(result);
-            }
-        });
-    });
-    return result; // return result of the Delete Operation
-}

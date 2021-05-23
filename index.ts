@@ -3,16 +3,6 @@ const app = express();
 const port = process.env.PORT || 4000;
 import * as database from './database';
 
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ DEVELOPMENT ONLY
-// const cors = require("cors"); // FOR TESTING / DEVELOPMENT !
-import cors from 'cors';
-
-const corsOptions = { // FOR TESTING / DEVELOPMENT !
-    origin: 'http://localhost:3000'
-}
-app.use(cors(corsOptions)); // FOR TESTING / DEVELOPMENT !
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ DEVELOPMENT ONLY
-
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
@@ -45,8 +35,7 @@ app.get('/get', (req, res) => {
 
 // Redirect all unknown urls back to main page !
 app.get('/', (req, res) => {
-    //   res.redirect("/index.html");
-    res.send("We are Running !"); // FOR TESTING WHILE WORKING ON BACK-END
+    res.redirect("/index.html");
 })
 
 app.listen(port, () => {
