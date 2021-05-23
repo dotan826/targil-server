@@ -5,7 +5,7 @@
 
 For Testing on single computer, do the following :
 
-1. open "package.json" then go to "scripts" then to "start" and change the string "node" to "nodemon".
+1. open the file "package.json" then go to "scripts" then to "start" and change the string "node" to "nodemon".
 2. open the file "index.ts" and add after imports the code :
 
     import cors from 'cors';
